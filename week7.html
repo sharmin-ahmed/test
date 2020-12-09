@@ -1,0 +1,87 @@
+<!--
+DOM is a 2 way API
+    API: a function/ method where you know what it does
+
+    that means you know the input and the output of the function
+    but you don't know how the function was created
+
+    console.log(add(3,4));  input----two numbers
+                            output----sum
+
+    payment apis-----
+    
+    inner.html is a DOM function that you can use to add js content to an HTML page
+
+    but you don't know how inner.html was created and you don't need to
+    
+    DOM is an API that offers some methods/ properties that you can use 
+    to add dynamic content to your static html page
+    DOM is a host object---it has certain properties/ methods you can use
+
+    Steps for adding dynamic content to HTML page
+
+    1. Add a container in HTML page where you want to put your js content
+    2. write your js code
+    3. create a reference for your container
+    4. use window.onload to add the content in the container using inner.html
+5. YOU MUST MUST MUST PUT THE INNERHTML CODE AND CONTAINER REFERENCE INSIDE 
+WINDOW.ONLOAD!!!!!!!!!!!
+
+when the browser renders your html code to show in your browser window as content
+it generates a tree called the DOM tree
+
+-->
+
+<script>
+// add your js content here
+
+var fruits = ["apples","bananas","oranges","mangoes","Strawberry"];
+var age = 18;
+
+var student = {
+    name:"Sharmin",
+    id: 123456,
+    program:"CSD",
+    print:function(){
+        return this.name+" "+this.id+" "+this.program;
+    }
+}
+
+window.onload=function(){
+// the js code execution here needs to wait until the browser has finished loading
+// the page. This is achieved by using the event window.onload
+
+
+    // creates reference of container with id "a" in variable container
+   /// the following codes MUST BE INSIDE window.onload
+    var container = document.getElementById("a");
+    var container1 = document.getElementById("b");
+    var student_info = document.getElementById("c");
+    var img = document.getElementById("fig");
+
+    var imagename = "logo.png";
+
+
+    container1.innerHTML="<p>The age when you start college is "+age+"</p>";
+
+    student_info.innerHTML = "<h1>"+student.print()+"</h1>";
+
+    img.innerHTML = "<img src='"+imagename+"'/>";
+    
+    var str = "<ol>";
+        for(var i=0;i<fruits.length;i++){
+            str+="<li>"+fruits[i]+"</li>";
+        }
+        str+="</ol>";
+        container.innerHTML=str;
+};
+
+</script>
+           <!--
+        this div is the container where you will place your js content
+        ----->
+    <div id="a"></div>
+     <div id = "b"></div>
+     <div id = "c"></div>
+     <figure id="fig"> </figure>      
+ 
